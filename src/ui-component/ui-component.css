@@ -1,0 +1,54 @@
+.wrap2 {
+    position: relative;
+    transform-style: preserve-3d;
+    margin-left: 80px;
+    top:30px;
+    transform: rotateX(11deg) rotateY(0deg);
+    width: 60px;
+    height: 20px;
+    /*perspective: 500px;*/
+    animation: rotate 5s linear infinite;
+}
+@keyframes rotate {
+    from {
+        transform: rotateX(11deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(11deg) rotateY(360deg);
+    }
+}
+.wrap2 >div {
+    position: absolute;
+    width: 60px;
+    height: 20px;
+    background-color: #ffffff;
+    opacity: .8;
+    line-height: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #000000;
+}
+.wrap2 >div.one {
+    transform: translateZ(-60px);
+}
+.wrap2 >div.two {
+    transform: rotateY(60deg) translateZ(-60px);
+}
+.wrap2 >div.three {
+    transform: rotateY(120deg) translateZ(60px) rotateX(180deg) rotateZ(180deg);
+}
+.wrap2 >div.four {
+    transform: rotateY(180deg) translateZ(-60px);
+}
+.wrap2 >div.five {
+    transform: rotateY(240deg) translateZ(-60px);
+}
+.wrap2 >div.six {
+    transform: rotateY(300deg) translateZ(60px) rotateX(180deg) rotateZ(180deg);
+}
+.wrap2 >div.seven {
+    transform: rotateY(360deg);
+}
+.wrap2 >div.eight {
+
+}

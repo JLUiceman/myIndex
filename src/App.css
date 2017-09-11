@@ -9,15 +9,16 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #202020;
   height: 75px;
-  padding: 20px;
   color: white;
+  box-shadow: 10px 10px 5px #d3d3d3;
 }
 
 .App-intro {
   font-size: large;
 }
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
@@ -33,6 +34,45 @@
   height: calc(100% - 75px);
   position: relative;
 }
+
+.content-wrap .colorful-font {
+  position: absolute;
+  font-size: 200px;
+  top: 100px;
+  text-align: center;
+  width: 100%;
+  color: #000000;
+}
+.content-wrap .colorful-font>span {
+  position: relative;
+  display: inline-block;
+}
+.content-wrap .colorful-font>span:before {
+  content: '极';
+  position: absolute;
+  font-size: 200px;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.content-wrap .banner {
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+.content-wrap .banner.left {
+  background-color: #000000;
+}
+
+.content-wrap .banner.right {
+  background-color: #ffffff;
+}
+
 .wave-wrap {
   height: 100%;
   width: 100%;
