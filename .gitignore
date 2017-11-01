@@ -4,6 +4,7 @@ test
 .tmp
 .sass-cache
 .idea
+idea/
 bower_components
 .DS_Store
 npm-debug.log
