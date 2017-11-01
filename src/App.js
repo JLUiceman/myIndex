@@ -11,6 +11,7 @@ class App extends Component {
             <RotateElement>
 
             </RotateElement>
+
         </div>
         <div className="content-wrap clearfix">
             <div className="banner left">
