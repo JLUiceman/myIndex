@@ -2,26 +2,33 @@ import React, { Component } from 'react';
 import './ui-component.css'
 
 class RotateElement extends Component {
+    constructor(props){
+        super(props)
+        console.log(props)
+        this.state = {
+            textArr: props.source
+        }
+    }
     render() {
         return (
         <div className="wrap2">
             <div className="one">
-                我
+                {this.state.textArr[0]}
             </div>
             <div className="two">
-                啥
+                {this.state.textArr[4]}
             </div>
             <div className="three">
-                问
+                {this.state.textArr[1]}
             </div>
             <div className="four">
-                你
+                {this.state.textArr[3]}
             </div>
             <div className="five">
-                问
+                {this.state.textArr[2]}
             </div>
             <div className="six">
-                瞅
+                {this.state.textArr[5]}
             </div>
         </div>
         )
