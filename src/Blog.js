@@ -58,9 +58,12 @@ class Blog extends Component {
         return(
             <Layout className="layout" style={{height: '100%'}}>
                 <Header style={{backgroundColor: '#fff'}}>
-                    <RotateElement source={textSet} onClick={this.handleClick}>
+                    <div className="rotate-wrap" onClick={this.handleClick}>
+                        <RotateElement source={textSet}>
 
-                    </RotateElement>
+                        </RotateElement>
+                    </div>
+
                 </Header>
                 <Layout>
                     <Sider>

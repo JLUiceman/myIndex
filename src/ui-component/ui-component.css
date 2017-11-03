@@ -1,8 +1,8 @@
 .wrap2 {
     position: relative;
     transform-style: preserve-3d;
-    margin-left: 80px;
-    top:30px;
+    margin-left: 50px;
+    top:25px;
     transform: rotateX(11deg) rotateY(0deg);
     width: 60px;
     height: 20px;
