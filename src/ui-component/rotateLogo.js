@@ -4,9 +4,8 @@ import './ui-component.css'
 class RotateElement extends Component {
     constructor(props){
         super(props)
-        console.log(props)
         this.state = {
-            textArr: props.source
+            textArr: props.source || ['点','我','返','回','首','页']
         }
     }
     render() {
