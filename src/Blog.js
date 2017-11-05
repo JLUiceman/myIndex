@@ -2,9 +2,11 @@
  * Created by caiyongbin on 2017/10/29.
  */
 import React, { Component } from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Card } from 'antd';
 import RotateElement from './ui-component/rotateLogo.js'
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
+import axios from 'axios'
+
 
 const { Header, Content, Footer, Sider } = Layout;
 const tabListSource = [
@@ -25,8 +27,8 @@ const tabListSource = [
         title: 'Python'
     },
     {
-        key: 'aaa',
-        title: '我去'
+        key: 'other',
+        title: '其他'
     }
 ]
 
@@ -83,62 +85,39 @@ class Blog extends Component {
 }
 
 
-function _getList (type) {
-    let list = []
-    if (!type) {
-        return list
-    }
-    switch (type) {
-        case 'javascript':
-            list = [
-                {
-                    title: 'js测试',
-                    id: 1
-                }
-            ];
-            break;
-        case 'css':
-            list = [
-                {
-                    title: 'css测试',
-                    id: 2
-                }
-            ];
-            break;
-        case 'git':
-            list = [
-                {
-                    title: 'git测试',
-                    id: 3
-                }
-            ];
-            break;
-        case 'python':
-            list = [
-                {
-                    title: 'python测试',
-                    id: 4
-                }
-            ];
-            break;
-    }
-    return list.map((m) => <li key={m.id}><Link to={'blog/detail/' + m.id}>{m.title}</Link></li>)
+function _getList(source, type) {
+    return source.filter(m => m.article_type == type).map(m =>
+    <li key={m.id} className="mb10">
+        <Card title={m.article_title} extra={<Link to={'blog/detail/' + m.id}>点击进入详情</Link>}>
+            <p>{m.shortcut || '暂无简介'}</p>
+        </Card>
+    </li>
+    )
 }
+
 
 class ListView extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            loadType: props.params.type
+            loadType: props.params.type,
+            list: []
         }
+    }
+
+    componentDidMount() {
+        axios.get('http://127.0.0.1:8081/api/articles/list/').then(res => {
+            const list = res.data
+            this.setState({list})
+        }
+        )
     }
 
     render() {
         return(
             <div>
-                {this.props.params.type}列表
                 <ul>
-                    {_getList(this.props.params.type)}
+                    {_getList(this.state.list, this.props.params.type).length ? _getList(this.state.list, this.props.params.type) : <li>暂无内容哦</li>}
                 </ul>
             </div>
         )
@@ -151,17 +130,29 @@ class ListView extends Component{
 class DetailView extends Component{
     constructor(props) {
         super(props)
-        console.log(props)
         this.state = {
             title: props.params.id + '的标题',
             content: props.params.id + '的内容'
         }
     }
+    componentDidMount() {
+        axios.get('http://127.0.0.1:8081/api/article/detail/' + this.props.params.id + '/').then(res => {
+            if (res && res.data) {
+                this.setState(
+                    {
+                        title: res.data.article_title,
+                        content: res.data.article_content
+                    }
+                )
+            }
+        })
+    }
     render(){
         return(
             <div>
-                <h1>{this.state.title}</h1>
-                <p>{this.state.content}</p>
+                <Card title={this.state.title} >
+                    <div dangerouslySetInnerHTML={{__html: this.state.content}}></div>
+                </Card>
             </div>
         )
     }
