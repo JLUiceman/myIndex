@@ -31,7 +31,7 @@ class VerifyAccess extends Component{
     }
     handleClick() {
         var _this = this
-        let url = 'http://127.0.0.1:8081/api/isFriend/' + this.state.value
+        let url = 'http://www.jluiceman.com/api/isFriend/' + this.state.value
         axios.get(url).then(function (response) {
             _this.setState({
                 isFriend: !0,

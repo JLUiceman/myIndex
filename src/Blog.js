@@ -106,7 +106,7 @@ class ListView extends Component{
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:8081/api/articles/list/').then(res => {
+        axios.get('http://www.jluicem.com/api/articles/list/').then(res => {
             const list = res.data
             this.setState({list})
         }
@@ -136,7 +136,7 @@ class DetailView extends Component{
         }
     }
     componentDidMount() {
-        axios.get('http://127.0.0.1:8081/api/article/detail/' + this.props.params.id + '/').then(res => {
+        axios.get('http://www.jluiceman.com/api/article/detail/' + this.props.params.id + '/').then(res => {
             if (res && res.data) {
                 this.setState(
                     {
