@@ -106,7 +106,7 @@ class ListView extends Component{
     }
 
     componentDidMount() {
-        axios.get('http://www.jluicem.com/api/articles/list/').then(res => {
+        axios.get('http://www.jluiceman.com/api/articles/list/').then(res => {
             const list = res.data
             this.setState({list})
         }
